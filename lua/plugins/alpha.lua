@@ -52,8 +52,8 @@ return {
     dashboard.section.buttons.val = {
       dashboard.button('f', '📁  Open Folder', ':Neotree toggle<CR>'),
       dashboard.button('g', '🔍  Find Word (Live Grep)', ':Telescope live_grep<CR>'),
-      dashboard.button('t', '🎨  Switch Theme', ":lua require('plugins.colortheme').cycle_theme()<CR>"),
       dashboard.button('s', '⚙️  Settings (.config/nvim)', ':e ~/.config/nvim<CR>'),
+      dashboard.button('t', '🎨  Switch Theme', ":lua require('plugins.colortheme').select_theme()<CR>"),
       dashboard.button('q', '❌  Quit Neovim', ':qa<CR>'),
       dashboard.button('r', '   Restore Last Session', "<cmd>lua require('persistence').load({ last = true })<CR>"),
       dashboard.button('s', '   Restore CWD Session', "<cmd>lua require('persistence').load()<CR>"),
