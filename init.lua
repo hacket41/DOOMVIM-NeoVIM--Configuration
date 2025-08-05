@@ -27,6 +27,7 @@ require('lazy').setup {
   require 'plugins.indent-blankline',
   require 'plugins.misc',
   require 'plugins.comment',
+  require 'plugins.persistence',
 }
 
 -- Load colortheme module after plugins are loaded

@@ -1,8 +1,32 @@
 local M = {}
 
-local current_theme = 'nord'
+-- Theme state
+local theme_file = vim.fn.stdpath 'cache' .. '/theme.txt'
+local current_theme = 'nord' -- fallback default
 local bg_transparent = true
 
+-- Read theme from file
+local function read_theme()
+  local f = io.open(theme_file, 'r')
+  if f then
+    local name = f:read '*l'
+    f:close()
+    if name then
+      current_theme = name
+    end
+  end
+end
+
+-- Save theme to file
+local function save_theme()
+  local f = io.open(theme_file, 'w')
+  if f then
+    f:write(current_theme)
+    f:close()
+  end
+end
+
+-- Apply a theme
 local function apply_theme(name)
   current_theme = name
   vim.cmd 'hi clear' -- reset highlights
@@ -28,9 +52,11 @@ local function apply_theme(name)
     }
     vim.cmd 'colorscheme tokyonight'
   end
+
+  save_theme()
 end
 
--- Custom tbl_indexof function to find index in table
+-- Utility: index in table
 local function tbl_indexof(tbl, val)
   for i, v in ipairs(tbl) do
     if v == val then
@@ -54,12 +80,19 @@ function M.toggle_transparency()
   vim.notify('Transparency: ' .. (bg_transparent and 'On' or 'Off'), vim.log.levels.INFO)
 end
 
--- Delayed initial theme load
+function M.current_theme()
+  vim.notify('Current theme: ' .. (vim.g.colors_name or 'unknown'))
+end
+
+-- Load saved theme on startup
 vim.schedule(function()
+  read_theme()
   apply_theme(current_theme)
 end)
 
+-- Keymaps
 vim.keymap.set('n', '<leader>bg', M.toggle_transparency, { desc = 'Toggle transparency' })
 vim.keymap.set('n', '<leader>ct', M.cycle_theme, { desc = 'Cycle color theme' })
+vim.keymap.set('n', '<leader>cs', M.current_theme, { desc = 'Show current theme' })
 
 return M

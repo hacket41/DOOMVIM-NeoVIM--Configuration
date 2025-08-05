@@ -1,25 +1,28 @@
 -- ~/.config/nvim/lua/plugins/themes.lua
-
 return {
-  -- Nord theme
   {
     'shaunsingh/nord.nvim',
-    lazy = false,
     priority = 1000,
+    lazy = false,
+    init = function()
+      vim.g.nord_contrast = true
+      vim.g.nord_borders = false
+      vim.g.nord_disable_background = true
+      vim.g.nord_italic = false
+      vim.g.nord_uniform_diff_background = true
+      vim.g.nord_bold = false
+      vim.cmd 'colorscheme nord'
+    end,
   },
-
-  -- Catppuccin theme
   {
     'catppuccin/nvim',
     name = 'catppuccin',
-    lazy = false,
     priority = 1000,
+    lazy = false,
   },
-
-  -- Tokyo Night theme
   {
     'folke/tokyonight.nvim',
-    lazy = false,
     priority = 1000,
+    lazy = false,
   },
 }
