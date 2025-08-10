@@ -28,6 +28,7 @@ require('lazy').setup {
   require 'plugins.misc',
   require 'plugins.comment',
   require 'plugins.persistence',
+  require 'plugins.flutter',
 }
 
 -- Load colortheme module after plugins are loaded

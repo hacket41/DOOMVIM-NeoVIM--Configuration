@@ -130,6 +130,17 @@ return {
     -- - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
     -- - settings (table): Override the default settings passed when initializing the server.
     local servers = {
+      dartls = {
+        cmd = { '/home/hacket41/flutter/bin/dart', 'language-server', '--protocol=lsp' },
+        on_attach = function(client, bufnr)
+          local map = vim.keymap.set
+          local opts = { buffer = bufnr, silent = true }
+          map('n', 'gd', vim.lsp.buf.definition, opts)
+          map('n', 'K', vim.lsp.buf.hover, opts)
+          map('n', '<leader>rn', vim.lsp.buf.rename, opts)
+        end,
+        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+      },
       ts_ls = {},
       ruff = {},
       pylsp = {
@@ -177,10 +188,39 @@ return {
           },
         },
       },
+      omnisharp = {
+        cmd = {
+          vim.fn.stdpath 'data' .. '/mason/bin/omnisharp', -- Mason path
+          '--languageserver',
+          '--hostPID',
+          tostring(vim.fn.getpid()),
+        },
+        filetypes = { 'cs', 'cshtml', 'razor' },
+        enable_import_completion = true,
+        organize_imports_on_format = true,
+        enable_roslyn_analyzers = true,
+        settings = {
+          FormattingOptions = {
+            enable = true,
+          },
+          RoslynExtensionsOptions = {
+            enableAnalyzersSupport = true,
+            enableImportCompletion = true,
+            analyzeOpenDocumentsOnly = false,
+          },
+        },
+      },
     }
 
     -- Ensure the servers and tools above are installed
     local ensure_installed = vim.tbl_keys(servers or {})
+
+    for i, server in ipairs(ensure_installed) do
+      if server == 'dartls' then
+        table.remove(ensure_installed, i)
+        break
+      end
+    end
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format Lua code
     })
