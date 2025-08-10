@@ -79,3 +79,6 @@ end, { desc = 'Go to next diagnostic message' })
 
 vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+-- For running flutter projects
+vim.keymap.set('n', '<leader>fr', ':!flutter run<CR>', { noremap = true, silent = true, desc = 'Run Flutter project' })

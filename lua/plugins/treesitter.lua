@@ -30,6 +30,7 @@ return { -- Highlight, edit, and navigate code
       'bash',
       'tsx',
       'css',
+      'c_sharp',
       'html',
     },
     -- Autoinstall languages that are not installed
