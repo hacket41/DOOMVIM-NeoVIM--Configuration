@@ -15,6 +15,7 @@ local themes = {
   'kanagawa-dragon',
   'kanagawa-lotus',
   'nord',
+  'oxocarbon',
 }
 
 local function read_theme()
@@ -64,11 +65,14 @@ local function apply_theme(name)
   elseif name == 'nord' then
     vim.g.nord_disable_background = bg_transparent
     vim.cmd 'colorscheme nord'
+  elseif name == 'oxocarbon' then
+    -- Optional: enable Lua syntax tweaks
+    vim.g.oxocarbon_lua = true
+    vim.cmd 'colorscheme oxocarbon'
   end
 
   save_theme()
 end
-
 function M.select_theme()
   local has_telescope, telescope = pcall(require, 'telescope')
   if not has_telescope then
