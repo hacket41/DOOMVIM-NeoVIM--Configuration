@@ -17,6 +17,11 @@ local themes = {
   'nord',
   'oxocarbon',
   'gruvbox',
+  'neofusion',
+  'flexoki',
+  'sonokai-andromeda',
+  'sonokai-maia',
+  'sonokai-shusia',
 }
 
 local function read_theme()
@@ -72,10 +77,24 @@ local function apply_theme(name)
     vim.cmd 'colorscheme oxocarbon'
   elseif name == 'gruvbox' then
     vim.cmd 'colorscheme gruvbox'
+  elseif name == 'neofusion' then
+    vim.o.background = 'dark'
+    vim.cmd 'colorscheme neofusion'
+  elseif name == 'flexoki' then
+    vim.cmd 'colorscheme flexoki-dark'
+  elseif name == 'sonokai-andromeda' then
+    vim.g.sonokai_style = 'andromeda'
+    vim.cmd 'colorscheme sonokai'
+  elseif name == 'sonokai-maia' then
+    vim.g.sonokai_style = 'maia'
+    vim.cmd 'colorscheme sonokai'
+  elseif name == 'sonokai-shusia' then
+    vim.g.sonokai_style = 'shusia'
+    vim.cmd 'colorscheme sonokai'
   end
-
   save_theme()
 end
+
 function M.select_theme()
   local has_telescope, telescope = pcall(require, 'telescope')
   if not has_telescope then

@@ -44,4 +44,23 @@ return {
     priority = 1000,
     lazy = false,
   },
+
+  {
+    'diegoulloao/neofusion.nvim',
+    priority = 1000,
+    lazy = false,
+  },
+
+  {
+    'kepano/flexoki-neovim',
+    name = 'flexoki',
+    priority = 1000,
+    lazy = false,
+  },
+
+  {
+    'sainnhe/sonokai',
+    priority = 1000,
+    lazy = false,
+  },
 }
