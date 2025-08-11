@@ -16,6 +16,7 @@ local themes = {
   'kanagawa-lotus',
   'nord',
   'oxocarbon',
+  'gruvbox',
 }
 
 local function read_theme()
@@ -69,6 +70,8 @@ local function apply_theme(name)
     -- Optional: enable Lua syntax tweaks
     vim.g.oxocarbon_lua = true
     vim.cmd 'colorscheme oxocarbon'
+  elseif name == 'gruvbox' then
+    vim.cmd 'colorscheme gruvbox'
   end
 
   save_theme()
