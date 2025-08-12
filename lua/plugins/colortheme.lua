@@ -2,13 +2,13 @@ local M = {}
 
 local theme_file = vim.fn.stdpath 'cache' .. '/theme.txt'
 local current_theme = 'tokyonight-night'
-local bg_transparent = true
+local bg_transparent = false
 
 local themes = {
   'tokyonight-night',
   'tokyonight-storm',
   'tokyonight-moon',
-  'catppuccin-latte',
+  'catppuccin-mocha',
   'catppuccin-frappe',
   'catppuccin-macchiato',
   'kanagawa-wave',
@@ -22,6 +22,11 @@ local themes = {
   'sonokai-andromeda',
   'sonokai-maia',
   'sonokai-shusia',
+  'nightfox',
+  'carbonfox',
+  'nordfox',
+  'duskfox',
+  'terafox',
 }
 
 local function read_theme()
@@ -91,6 +96,16 @@ local function apply_theme(name)
   elseif name == 'sonokai-shusia' then
     vim.g.sonokai_style = 'shusia'
     vim.cmd 'colorscheme sonokai'
+  elseif name == 'nightfox' then
+    vim.cmd 'colorscheme nightfox'
+  elseif name == 'carbonfox' then
+    vim.cmd 'colorscheme carbonfox'
+  elseif name == 'duskfox' then
+    vim.cmd 'colorscheme duskfox'
+  elseif name == 'nordfox' then
+    vim.cmd 'colorscheme nordfox'
+  elseif name == 'terafox' then
+    vim.cmd 'colorscheme terafox'
   end
   save_theme()
 end

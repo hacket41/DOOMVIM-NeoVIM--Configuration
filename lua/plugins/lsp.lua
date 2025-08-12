@@ -141,7 +141,26 @@ return {
         end,
         capabilities = require('cmp_nvim_lsp').default_capabilities(),
       },
-      ts_ls = {},
+      ts_ls = {
+        filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+        root_dir = require('lspconfig.util').root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git'),
+        settings = {
+          typescript = {
+            inlayHints = {
+              includeInlayParameterNameHints = 'all',
+              includeInlayVariableTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+            },
+          },
+        },
+      },
+      eslint = {
+        filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'svelte' },
+        settings = {
+          format = { enable = true },
+        },
+      },
       ruff = {},
       pylsp = {
         settings = {
@@ -224,7 +243,36 @@ return {
     vim.list_extend(ensure_installed, {
       'stylua', -- Used to format Lua code
     })
-    require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+
+    require('mason-lspconfig').setup {
+      ensure_installed = vim.tbl_filter(function(server)
+        return server ~= 'dartls' -- dartls is installed manually
+      end, vim.tbl_keys(servers)),
+    }
+
+    require('mason-tool-installer').setup {
+      ensure_installed = {
+        -- LSPs (Mason package names)
+        'typescript-language-server',
+        'eslint-lsp',
+        'html-lsp',
+        'css-lsp',
+        'tailwindcss-language-server',
+        'dockerfile-language-server',
+        'sqls',
+        'terraform-ls',
+        'json-lsp',
+        'yaml-language-server',
+        'lua-language-server',
+        'omnisharp', -- already included manually but listed here for safety
+
+        -- Linters/Formatters
+        'prettier',
+        'eslint_d',
+        'stylua',
+      },
+      auto_update = true,
+    }
 
     for server, cfg in pairs(servers) do
       -- For each LSP server (cfg), we merge:
