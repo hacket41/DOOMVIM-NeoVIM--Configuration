@@ -82,3 +82,26 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 -- For running flutter projects
 vim.keymap.set('n', '<leader>fr', ':!flutter run<CR>', { noremap = true, silent = true, desc = 'Run Flutter project' })
+
+-- For running C/C++ projects
+
+-- Compile & run C/C++ file
+-- Compile & run C/C++ file
+vim.keymap.set('n', '<leader>fc', function()
+  local file = vim.fn.expand '%:p' -- full path of current file
+  local filepath = vim.fn.expand '%:p:h' -- directory of the file
+  local filename = vim.fn.expand '%:t:r' -- file name without extension
+  local ext = vim.fn.expand '%:e'
+
+  local cmd = ''
+  if ext == 'c' then
+    cmd = string.format("gcc '%s' -o '%s/%s' && '%s/%s'", file, filepath, filename, filepath, filename)
+  elseif ext == 'cpp' then
+    cmd = string.format("g++ '%s' -o '%s/%s' && '%s/%s'", file, filepath, filename, filepath, filename)
+  else
+    print 'Not a C or C++ file.'
+    return
+  end
+
+  vim.cmd('split term://' .. cmd) -- run in a split terminal
+end, { noremap = true, silent = true, desc = 'Compile & run C/C++ file' })
