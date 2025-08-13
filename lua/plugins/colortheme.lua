@@ -27,6 +27,7 @@ local themes = {
   'nordfox',
   'duskfox',
   'terafox',
+  'dracula',
 }
 
 local function read_theme()
@@ -106,6 +107,8 @@ local function apply_theme(name)
     vim.cmd 'colorscheme nordfox'
   elseif name == 'terafox' then
     vim.cmd 'colorscheme terafox'
+  elseif name == 'dracula' then
+    vim.cmd 'colorscheme dracula'
   end
   save_theme()
 end

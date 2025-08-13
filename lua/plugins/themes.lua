@@ -69,4 +69,10 @@ return {
     priority = 1000,
     lazy = false,
   },
+
+  {
+    'maxmx03/dracula.nvim',
+    priority = 1000,
+    lazy = false,
+  },
 }
