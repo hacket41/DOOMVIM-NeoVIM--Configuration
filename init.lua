@@ -31,9 +31,8 @@ require('lazy').setup {
   require 'plugins.flutter',
 }
 
-
 --Manual test for cpp files:
-require('plugins.c_cpp')
-  
+require 'plugins.c_cpp'
+
 -- Load colortheme module after plugins are loaded
 require 'plugins.colortheme'

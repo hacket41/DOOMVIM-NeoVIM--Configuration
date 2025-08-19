@@ -141,7 +141,7 @@ return {
         end,
         capabilities = require('cmp_nvim_lsp').default_capabilities(),
       },
-      tsserver = {
+      ts_ls = {
         filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
         root_dir = require('lspconfig.util').root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git'),
         settings = {

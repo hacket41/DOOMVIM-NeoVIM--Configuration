@@ -75,4 +75,22 @@ return {
     priority = 1000,
     lazy = false,
   },
+
+  {
+    'xero/miasma.nvim',
+    priority = 1000,
+    lazy = false,
+  },
+
+  {
+    'yorumicolors/yorumi.nvim',
+    priority = 1000,
+    lazy = false,
+  },
+
+  {
+    'mhartington/oceanic-next',
+    priority = 1000,
+    lazy = false,
+  },
 }

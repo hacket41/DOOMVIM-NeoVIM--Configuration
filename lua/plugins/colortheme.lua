@@ -28,6 +28,9 @@ local themes = {
   'duskfox',
   'terafox',
   'dracula',
+  'miasma',
+  'yorumi',
+  'oceanic-next',
 }
 
 local function read_theme()
@@ -109,6 +112,12 @@ local function apply_theme(name)
     vim.cmd 'colorscheme terafox'
   elseif name == 'dracula' then
     vim.cmd 'colorscheme dracula'
+  elseif name == 'miasma' then
+    vim.cmd 'colorscheme miasma'
+  elseif name == 'yorumi' then
+    vim.cmd 'colorscheme yorumi'
+  elseif name == 'oceanic-next' then
+    vim.cmd 'colorscheme OceanicNext'
   end
   save_theme()
 end
