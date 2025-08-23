@@ -29,6 +29,7 @@ require('lazy').setup {
   require 'plugins.comment',
   require 'plugins.persistence',
   require 'plugins.flutter',
+  require 'plugins.codium',
 }
 
 --Manual test for cpp files:

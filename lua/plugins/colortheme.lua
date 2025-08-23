@@ -31,6 +31,7 @@ local themes = {
   'miasma',
   'yorumi',
   'oceanic-next',
+  'cyberdream',
 }
 
 local function read_theme()
@@ -118,6 +119,8 @@ local function apply_theme(name)
     vim.cmd 'colorscheme yorumi'
   elseif name == 'oceanic-next' then
     vim.cmd 'colorscheme OceanicNext'
+  elseif name == 'cyberdream' then
+    vim.cmd 'colorscheme cyberdream'
   end
   save_theme()
 end
