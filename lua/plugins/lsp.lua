@@ -141,7 +141,7 @@ return {
         end,
         capabilities = require('cmp_nvim_lsp').default_capabilities(),
       },
-      ts_ls = {
+      tsserver = {
         filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
         root_dir = require('lspconfig.util').root_pattern('package.json', 'tsconfig.json', 'jsconfig.json', '.git'),
         settings = {
@@ -265,7 +265,6 @@ return {
         'yaml-language-server',
         'lua-language-server',
         'omnisharp', -- already included manually but listed here for safety
-
         -- Linters/Formatters
         'prettier',
         'eslint_d',
