@@ -154,6 +154,8 @@ return {
             },
           },
         },
+        -- Make sure capabilities include cmp_nvim_lsp
+        capabilities = vim.tbl_deep_extend('force', {}, capabilities),
       },
       eslint = {
         filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'svelte' },
@@ -246,8 +248,11 @@ return {
 
     require('mason-lspconfig').setup {
       ensure_installed = vim.tbl_filter(function(server)
-        return server ~= 'dartls' -- dartls is installed manually
+        return server ~= 'dartls'
       end, vim.tbl_keys(servers)),
+
+      -- This makes sure mason-lspconfig knows how to map names like "tsserver" -> "typescript-language-server"
+      automatic_installation = true,
     }
 
     require('mason-tool-installer').setup {
