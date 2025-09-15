@@ -22,32 +22,6 @@ return {
       [[      ⢿⣿⡆⠀⠀⠀⣿⡿      ____________________________________________________________      ⢿⣿⡆⠀⠀⠀⣿⡿⠀⠀⠀⠀⠀⠀]],
     }
 
-    -- Create Folder Button (aligned and opens folder)
-    local create_folder_button = {
-      type = 'button',
-      val = '📂  Create Folder',
-      on_press = function()
-        local folder = vim.fn.input 'Folder name: '
-        if folder ~= '' then
-          vim.fn.mkdir(folder, 'p')
-          print('📂 Created folder: ' .. folder)
-          local escaped = vim.fn.fnameescape(folder)
-          vim.cmd('Neotree reveal dir=' .. escaped)
-        else
-          print '⚠️ Cancelled: No folder name given'
-        end
-      end,
-      opts = {
-        position = 'center',
-        shortcut = 'n',
-        cursor = 3, -- aligns with other buttons
-        width = 40,
-        align_shortcut = 'right',
-        hl = 'Normal',
-        hl_shortcut = 'Keyword',
-      },
-    }
-
     -- Dashboard Buttons
     dashboard.section.buttons.val = {
       dashboard.button('f', '📁  Open Folder', ':Neotree toggle<CR>'),
@@ -58,7 +32,6 @@ return {
       dashboard.button('r', '   Restore Last Session', "<cmd>lua require('persistence').load({ last = true })<CR>"),
       dashboard.button('s', '   Restore CWD Session', "<cmd>lua require('persistence').load()<CR>"),
       dashboard.button('d', "   Don't Save Session", "<cmd>lua require('persistence').stop()<CR>"),
-      create_folder_button,
     }
 
     -- Make all button icons same color (monochrome)

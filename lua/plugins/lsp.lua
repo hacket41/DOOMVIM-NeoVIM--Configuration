@@ -103,8 +103,15 @@ return {
               vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
             end,
           })
-        end
 
+          -- Java LSP (handled separately in plugins/java.lua)
+          vim.api.nvim_create_autocmd('FileType', {
+            pattern = 'java',
+            callback = function()
+              require('plugins.java').setup()
+            end,
+          })
+        end
         -- The following code creates a keymap to toggle inlay hints in your
         -- code, if the language server you are using supports them
         if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then

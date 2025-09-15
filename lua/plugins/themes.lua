@@ -99,4 +99,10 @@ return {
     priority = 1000,
     lazy = false,
   },
+
+  {
+    'Shatur/neovim-ayu',
+    priority = 1000,
+    lazy = false,
+  },
 }

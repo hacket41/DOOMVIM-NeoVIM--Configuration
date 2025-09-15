@@ -30,6 +30,7 @@ require('lazy').setup {
   require 'plugins.persistence',
   require 'plugins.flutter',
   require 'plugins.codium',
+  require 'plugins.java',
 }
 
 --Manual test for cpp files:

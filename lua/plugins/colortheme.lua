@@ -32,6 +32,9 @@ local themes = {
   'yorumi',
   'oceanic-next',
   'cyberdream',
+  'ayu-dark',
+  'ayu-light',
+  'ayu-mirage',
 }
 
 local function read_theme()
@@ -121,6 +124,27 @@ local function apply_theme(name)
     vim.cmd 'colorscheme OceanicNext'
   elseif name == 'cyberdream' then
     vim.cmd 'colorscheme cyberdream'
+  elseif name == 'ayu-dark' then
+    vim.o.background = 'dark'
+    require('ayu').setup {
+      mirage = false,
+      overrides = {},
+    }
+    vim.cmd 'colorscheme ayu'
+  elseif name == 'ayu-light' then
+    vim.o.background = 'light'
+    require('ayu').setup {
+      mirage = false,
+      overrides = {},
+    }
+    vim.cmd 'colorscheme ayu'
+  elseif name == 'ayu-mirage' then
+    vim.o.background = 'dark'
+    require('ayu').setup {
+      mirage = true,
+      overrides = {},
+    }
+    vim.cmd 'colorscheme ayu'
   end
   save_theme()
 end
