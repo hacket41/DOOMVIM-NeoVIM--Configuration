@@ -35,6 +35,7 @@ return { -- Highlight, edit, and navigate code
         'c_sharp',
         'html',
         'tsx',
+        'razor',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,

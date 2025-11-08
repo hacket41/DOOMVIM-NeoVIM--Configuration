@@ -31,6 +31,7 @@ require('lazy').setup {
   require 'plugins.flutter',
   require 'plugins.codium',
   require 'plugins.java',
+  require 'plugins.roslyn',
 }
 
 --Manual test for cpp files:

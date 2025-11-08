@@ -15,6 +15,7 @@ return {
         'prettier', -- ts/js formatter
         'eslint_d', -- ts/js linter
         'shfmt', -- Shell formatter
+        'csharpier', -- C# formatter
         'checkmake', -- linter for Makefiles
         -- 'stylua', -- lua formatter; Already installed via Mason
         -- 'ruff', -- Python linter and formatter; Already installed via Mason

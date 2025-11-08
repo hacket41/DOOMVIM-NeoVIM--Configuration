@@ -105,4 +105,10 @@ return {
     priority = 1000,
     lazy = false,
   },
+
+  {
+    'savq/melange-nvim',
+    priority = 1000,
+    lazy = false,
+  },
 }

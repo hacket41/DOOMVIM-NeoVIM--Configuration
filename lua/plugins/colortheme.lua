@@ -35,6 +35,7 @@ local themes = {
   'ayu-dark',
   'ayu-light',
   'ayu-mirage',
+  'melange',
 }
 
 local function read_theme()
@@ -75,12 +76,11 @@ local function apply_theme(name)
     }
     vim.cmd 'colorscheme catppuccin'
   elseif name:match '^kanagawa' then
-    local theme = name:match 'kanagawa%-(%a+)$' or 'wave'
+    local variant = name:match 'kanagawa%-(%a+)$' or 'wave'
     require('kanagawa').setup {
-      theme = theme,
       transparent = bg_transparent,
     }
-    vim.cmd 'colorscheme kanagawa'
+    vim.cmd('colorscheme kanagawa-' .. variant)
   elseif name == 'nord' then
     vim.g.nord_disable_background = bg_transparent
     vim.cmd 'colorscheme nord'
@@ -145,6 +145,8 @@ local function apply_theme(name)
       overrides = {},
     }
     vim.cmd 'colorscheme ayu'
+  elseif name == 'melange' then
+    vim.cmd 'colorscheme melange'
   end
   save_theme()
 end
