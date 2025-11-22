@@ -36,6 +36,7 @@ local themes = {
   'ayu-light',
   'ayu-mirage',
   'melange',
+  'vague',
 }
 
 local function read_theme()
@@ -147,6 +148,8 @@ local function apply_theme(name)
     vim.cmd 'colorscheme ayu'
   elseif name == 'melange' then
     vim.cmd 'colorscheme melange'
+  elseif name == 'vague' then
+    vim.cmd 'colorscheme vague'
   end
   save_theme()
 end

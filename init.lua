@@ -32,6 +32,7 @@ require('lazy').setup {
   require 'plugins.codium',
   require 'plugins.java',
   require 'plugins.roslyn',
+  require 'plugins.debug',
 }
 
 --Manual test for cpp files:

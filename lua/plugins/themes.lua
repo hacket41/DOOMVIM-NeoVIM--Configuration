@@ -111,4 +111,10 @@ return {
     priority = 1000,
     lazy = false,
   },
+
+  {
+    'vague-theme/vague.nvim',
+    priority = 1000,
+    lazy = false,
+  },
 }
