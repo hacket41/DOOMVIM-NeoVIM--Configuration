@@ -105,3 +105,36 @@ vim.keymap.set('n', '<leader>fc', function()
 
   vim.cmd('split term://' .. cmd) -- run in a split terminal
 end, { noremap = true, silent = true, desc = 'Compile & run C/C++ file' })
+
+-- For C# Dotnet
+
+vim.keymap.set('n', '<leader>fs', function()
+  -- get current directory
+  local cwd = vim.fn.expand '%:p:h'
+
+  -- look for .csproj in folder
+  local project_files = vim.fn.globpath(cwd, '*.csproj', false, true)
+
+  if #project_files == 0 then
+    print 'No .csproj project found in this folder.'
+    return
+  end
+
+  -- use the first .csproj file
+  local project = project_files[1]
+
+  -- run the project
+  local cmd = "dotnet run --project '" .. project .. "'"
+
+  vim.cmd('split term://' .. cmd)
+end, { noremap = true, silent = true, desc = 'Run C# .NET project' })
+
+-- React Native
+vim.keymap.set('n', '<leader>re', function()
+  vim.cmd [[botright split | terminal zsh -lc 'npx expo start; exec zsh']]
+end, { noremap = true, silent = true, desc = 'Run Expo project' })
+
+-- rest.nvim keymaps
+vim.keymap.set('n', '<leader>rr', '<Plug>RestNvim', { desc = 'Run REST request' })
+vim.keymap.set('n', '<leader>rl', '<Plug>RestNvimLast', { desc = 'Re-run last request' })
+vim.keymap.set('n', '<leader>rp', '<Plug>RestNvimPreview', { desc = 'Preview REST request' })
