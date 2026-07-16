@@ -1,21 +1,30 @@
--- Easily comment visual regions/lines
 return {
   'numToStr/Comment.nvim',
-  -- Do NOT use both opts = {} and config = function() together.
-  -- opts = {} triggers the default setup; config overrides it entirely.
-  config = function()
-    require('Comment').setup()
 
+  config = function()
+    local comment = require 'Comment'
+
+    comment.setup()
+
+    local api = require 'Comment.api'
     local opts = { noremap = true, silent = true }
 
-    -- Normal mode: toggle current line
-    vim.keymap.set('n', '<C-_>', require('Comment.api').toggle.linewise.current, opts)
-    vim.keymap.set('n', '<C-c>', require('Comment.api').toggle.linewise.current, opts)
-    vim.keymap.set('n', '<C-/>', require('Comment.api').toggle.linewise.current, opts)
+    -- NORMAL MODE
+    vim.keymap.set('n', '<C-_>', api.toggle.linewise.current, opts)
+    vim.keymap.set('n', '<C-/>', api.toggle.linewise.current, opts)
+    vim.keymap.set('n', '<C-c>', api.toggle.linewise.current, opts)
 
-    -- Visual mode: toggle selection
-    vim.keymap.set('v', '<C-_>', "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>", opts)
-    vim.keymap.set('v', '<C-c>', "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>", opts)
-    vim.keymap.set('v', '<C-/>', "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>", opts)
+    -- VISUAL MODE (NO visualmode(), NO nil possible)
+    vim.keymap.set('v', '<C-_>', function()
+      api.call('toggle.linewise', 'g@')
+    end, opts)
+
+    vim.keymap.set('v', '<C-/>', function()
+      api.call('toggle.linewise', 'g@')
+    end, opts)
+
+    vim.keymap.set('v', '<C-c>', function()
+      api.call('toggle.linewise', 'g@')
+    end, opts)
   end,
 }

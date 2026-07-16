@@ -38,6 +38,7 @@ local themes = {
   'melange',
   'vague',
   'rusty',
+  'poimandres',
 }
 
 local function read_theme()
@@ -165,8 +166,10 @@ local function apply_theme(name)
   -- RUSTY
   elseif name == 'rusty' then
     vim.cmd 'colorscheme rusty'
+    --POIMANDRES
+  elseif name == 'poimandres' then
+    vim.cmd 'colorscheme poimandres'
   end
-
   save_theme()
 end
 

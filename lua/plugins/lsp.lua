@@ -79,7 +79,11 @@ return {
 
     local servers = {
       dartls = {
-        cmd = { '/usr/bin/dart', 'language-server', '--protocol=lsp' }, -- Fixed: was '--protocol-lsp'
+        cmd = {
+          '/home/hacket41/Development/flutter/bin/dart',
+          'language-server',
+          '--protocol=lsp',
+        },
 
         on_attach = function(client, bufnr)
           local map = vim.keymap.set

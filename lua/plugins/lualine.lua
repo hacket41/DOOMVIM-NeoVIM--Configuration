@@ -1,7 +1,6 @@
 return {
   'nvim-lualine/lualine.nvim',
   config = function()
-    -- 🔥 auto-detect lualine theme from colorscheme
     local function lualine_theme()
       local cs = vim.g.colors_name
       if not cs then
@@ -28,7 +27,6 @@ return {
         vague = 'vague',
         ayu = 'ayu',
         miasma = 'miasma',
-        yorumi = 'yorumi',
         sonokai = 'sonokai',
         nightfox = 'nightfox',
         dracula = 'dracula',
@@ -36,6 +34,7 @@ return {
         oceanicnext = 'oceanicnext',
         neofusion = 'neofusion',
         flexoki = 'flexoki',
+        poimandres = 'poimandres',
       }
 
       return map[cs] or 'auto'
@@ -109,7 +108,7 @@ return {
       extensions = { 'fugitive' },
     }
 
-    -- 🔁 refresh when colorscheme changes
+    --  refresh when colorscheme changes
     vim.api.nvim_create_autocmd('ColorScheme', {
       callback = function()
         require('lualine').setup {

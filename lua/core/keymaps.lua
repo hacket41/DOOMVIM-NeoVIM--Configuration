@@ -81,10 +81,9 @@ vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open float
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- For running flutter projects
-vim.keymap.set('n', '<leader>fr', ':!flutter run<CR>', { noremap = true, silent = true, desc = 'Run Flutter project' })
-
--- For running C/C++ projects
-
+vim.keymap.set('n', '<leader>fr', function()
+  vim.cmd [[botright split | terminal zsh -lc 'flutter run; exec zsh']]
+end, { noremap = true, silent = true, desc = 'Run Flutter project' }) -- For running C/C++ projects
 -- Compile & run C/C++ file
 -- Compile & run C/C++ file
 vim.keymap.set('n', '<leader>fc', function()
